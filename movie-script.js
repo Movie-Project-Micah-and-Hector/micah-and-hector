@@ -42,9 +42,8 @@ function deletingMovies(id) {
 // deleted empty: 6,7,8,9,10,11,12,13,14,15,16,256,257,258,259,260,261
 
 function editingMovies(id) {
-    let choosenId= `${url}/${id}`;
     const option = {
-        method: 'PATCH'/choosenId
+        method: 'PATCH'
     }
     fetch(`${url}/${id}`, option)
         .then( response => console.log(response))
