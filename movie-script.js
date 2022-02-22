@@ -8,7 +8,7 @@ function getAllMovies() {
         .then(movies => console.log(movies))
         .catch(error => console.error(error));
 }
-getAllMovies();
+// getAllMovies();
 
 function addMovies() {
     const addition = {
@@ -42,8 +42,17 @@ function deletingMovies(id) {
 // deleted empty: 6,7,8,9,10,11,12,13,14,15,16,256,257,258,259,260,261
 
 function editingMovies(id) {
+    const editing = {
+        title: 'Night of the Living Hector',
+        rating: 5,
+        genre: 'Nature, Documentary'
+    };
     const option = {
-        method: 'PATCH'
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(editing)
     }
     fetch(`${url}/${id}`, option)
         .then( response => console.log(response))
