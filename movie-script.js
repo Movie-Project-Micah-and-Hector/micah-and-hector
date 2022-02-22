@@ -5,11 +5,21 @@ const url = 'https://agreeable-sumptuous-lilac.glitch.me/movies'
 function getAllMovies() {
     fetch(url)
         .then(response => response.json())
-        .then(movies => console.log(movies))
-        .catch(error => console.error(error));
-}
-// getAllMovies();
+        .then(movies => {
+            for (let i = 0; i < movies.length; i++) {
+                let html = ""
+                html = `<p>${movies[i].id}</p>`
+$(".movies").append(html)
+            }
+            console.log(movies)
+        })
 
+        .catch(error => console.error(error))
+
+
+}
+
+getAllMovies()
 function addMovies() {
     const addition = {
         title: 'Night of the Living Hector',
