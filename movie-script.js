@@ -8,7 +8,10 @@ function getAllMovies() {
         .then(movies => {
             for (let i = 0; i < movies.length; i++) {
                 let html = ""
-                html = `<p>${movies[i].id}</p>`
+                html = `<p>${movies[i].title} ${movies[i].rating} ${movies[i].year}</p>
+                        <p>Director: ${movies[i].director},Actors: ${movies[i].actors}</p>
+                        <p>${movies[i].poster}</p>
+                        <p>${movies[i].plot}</p>`
                 $(".movies").append(html)
             }
             console.log(movies)
@@ -55,7 +58,11 @@ function editingMovies(id) {
     const editing = {
         title: 'Night of the Living Hector',
         rating: 5,
-        genre: 'Nature, Documentary'
+        genre: 'Nature, Documentary',
+        year: '',
+        director: '',
+        actors: '',
+        poster: ''
     };
     const option = {
         method: 'PATCH',
@@ -69,5 +76,6 @@ function editingMovies(id) {
         .then(option => console.log(option))
         .catch( error => console.error(error));
 }
+// editingMovies()
 
 
