@@ -60,26 +60,7 @@ $('#addMovie').click(function (){
             body: JSON.stringify(addition),
         };
         fetch(url, option)
-            .then( response => {
-                for (let i = 0; i < response.length; i++) {
-                    let html = ""
-                    html = `<div class="row row-cols-1 row-cols-md-4">
-                            <div class="col mb-4">
-                                <div class="card h-100">
-                                    <img src="${response[i].poster}" class="movie-poster" alt="Movie Poster">
-                                        <div class="card-body">
-                                            <h5 class="card-title">${response[i].title}</h5>
-                                            <p class="card-text">${response[i].plot}</p>
-                                            <p class="card-text"><small class="text-muted"> Director: ${response[i].director}  Actors: ${response[i].actors} ${response[i].year}</small></p>
-                                            <button type="submit" id="removeMovie">Delete</button>
-                                        </div>
-                                </div>
-                            </div>
-                        </div>`
-                    $(".movies").append(html)
-                }
-                console.log(response)
-            })
+            .then( response => console.log(response))
             .catch( error => console.error(error));
     }
     addMovies();
