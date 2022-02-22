@@ -2,6 +2,7 @@
 
 const url = 'https://agreeable-sumptuous-lilac.glitch.me/movies'
 
+/** Making The movies Appear on the Page */
 function getAllMovies() {
     fetch(url)
         .then(response => response.json())
@@ -32,6 +33,7 @@ function getAllMovies() {
 }
 getAllMovies()
 
+/** Adding  the Movie to the List */
 $('#addMovie').click(function (){
     let movieTitle = $('#movieName').val();
     let movieYear = $('#yearCreated').val();
@@ -66,6 +68,7 @@ $('#addMovie').click(function (){
     addMovies();
 })
 
+/** Deletion Button */
 $('#removeMovie').click(function (){
     function deletingMovies(id) {
         const option = {
@@ -79,6 +82,7 @@ $('#removeMovie').click(function (){
     deletingMovies()
 })
 
+/** Editing Existing Movies on the List */
 function editingMovies(id) {
     const editing = {
         title: 'Night of the Living Hector',
