@@ -9,7 +9,7 @@ function getAllMovies() {
             for (let i = 0; i < movies.length; i++) {
                 let html = ""
                 html = `<p>${movies[i].id}</p>`
-$(".movies").append(html)
+                $(".movies").append(html)
             }
             console.log(movies)
         })
@@ -69,4 +69,5 @@ function editingMovies(id) {
         .then(option => console.log(option))
         .catch( error => console.error(error));
 }
+
 
