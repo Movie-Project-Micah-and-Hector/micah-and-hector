@@ -2,13 +2,17 @@
 
 const url = 'https://agreeable-sumptuous-lilac.glitch.me/movies'
 
+let tbody = document.querySelector('#movies')
+
+tbody.innerHTML = getAllMovies();
+
 function getAllMovies() {
     fetch(url)
         .then(response => response.json())
         .then(movies => console.log(movies))
         .catch(error => console.error(error));
 }
-// getAllMovies();
+getAllMovies();
 
 function addMovies() {
     const addition = {
@@ -59,4 +63,5 @@ function editingMovies(id) {
         .then(option => console.log(option))
         .catch( error => console.error(error));
 }
+
 

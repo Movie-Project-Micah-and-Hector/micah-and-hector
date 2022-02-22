@@ -18,61 +18,79 @@
     </style>
 </head>
 <body>
-<!-- Movie Name(text input) -->
-<input id="movieName" type="text" placeholder="Enter Movie Title">
-<!-- year(selects) -->
-<select class="year-form-control" id="yearCreated">
-    <option value="disable selected hidden">Select Year</option>
-    <option>2000</option>
-    <option>2001</option>
-    <option>2002</option>
-    <option>2003</option>
-    <option>2004</option>
-    <option>2005</option>
-    <option>2006</option>
-    <option>2007</option>
-    <option>2008</option>
-    <option>2009</option>
-    <option>2010</option>
-    <option>2011</option>
-    <option>2012</option>
-    <option>2013</option>
-    <option>2014</option>
-    <option>2015</option>
-    <option>2016</option>
-    <option>2017</option>
-    <option>2018</option>
-    <option>2019</option>
-    <option>2020</option>
-    <option>2021</option>
-    <option>2022</option>
-</select>
-<!-- ratings (selects) -->
-<select class="rate-form-control" id="movingRating">
-    <option value="disable selected hidden">Select Rating</option>
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-    <option>5</option>
-</select>
-<!-- directors (text input)-->
-<input id="directorName" type="text" placeholder="Enter Director(s) Name">
-<!-- actors (text input)-->
-<input id="actorsName" type="text" placeholder="Enter Actor(s) names">
-<!-- plot (text input(more likely textarea))-->
-<br><textarea id="moviePlot" name="plot" placeholder="Describe movie Plot"></textarea><br>
-<!-- genre (checkbox)-->
-<span><input type="checkbox" name="scary" value="horror">Horror</span>
-<span><input type="checkbox" name="funny" value="comedy"> Comedy</span>
-<span><input type="checkbox" name="lovely" value="romance"> Romance</span>
-<span><input type="checkbox" name="dramatic" value="drama"> Drama</span><br>
-<span><input type="checkbox" name="outdoors" value="nature"> Nature</span>
-<span><input type="checkbox" name="education" value="documentary"> Documentary</span>
-<span><input type="checkbox" name="childFriendly" value="kid"> Kid</span>
-<span><input type="checkbox" name="history" value="historical"> Historical</span>
-<!-- Submitting Button -->
-<button type="submit">Submit</button>
+<div class="container-fluid d-flex">
+    <div class="row row-left d-flex justify-content-center">
+        <div class="col-md-5 d-flex" id="movie-editor-adder">
+            <div class="row d-flex">
+                <!-- Movie Name(text input) -->
+                <input id="movieName" type="text" placeholder="Enter Movie Title">
+                <!-- year(selects) -->
+                <select class="year-form-control" id="yearCreated">
+                    <option value="disable selected hidden">Select Year</option>
+                    <option>2000</option>
+                    <option>2001</option>
+                    <option>2002</option>
+                    <option>2003</option>
+                    <option>2004</option>
+                    <option>2005</option>
+                    <option>2006</option>
+                    <option>2007</option>
+                    <option>2008</option>
+                    <option>2009</option>
+                    <option>2010</option>
+                    <option>2011</option>
+                    <option>2012</option>
+                    <option>2013</option>
+                    <option>2014</option>
+                    <option>2015</option>
+                    <option>2016</option>
+                    <option>2017</option>
+                    <option>2018</option>
+                    <option>2019</option>
+                    <option>2020</option>
+                    <option>2021</option>
+                    <option>2022</option>
+                </select>
+                <!-- ratings (selects) -->
+                <select class="rate-form-control" id="movingRating">
+                    <option value="disable selected hidden">Select Rating</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                <!-- directors (text input)-->
+                <input id="directorName" type="text" placeholder="Enter Director(s) Name">
+                <!-- actors (text input)-->
+                <input id="actorsName" type="text" placeholder="Enter Actor(s) names">
+                <!-- plot (text input(more likely textarea))-->
+                <br><textarea id="moviePlot" name="plot" placeholder="Describe movie Plot"></textarea><br>
+                <!-- genre (checkbox)-->
+                <span><input type="checkbox" name="scary" value="horror">Horror</span>
+                <span><input type="checkbox" name="funny" value="comedy"> Comedy</span>
+                <span><input type="checkbox" name="lovely" value="romance"> Romance</span>
+                <span><input type="checkbox" name="dramatic" value="drama"> Drama</span><br>
+                <span><input type="checkbox" name="outdoors" value="nature"> Nature</span>
+                <span><input type="checkbox" name="education" value="documentary"> Documentary</span>
+                <span><input type="checkbox" name="childFriendly" value="kid"> Kid</span>
+                <span><input type="checkbox" name="history" value="historical"> Historical</span>
+                <!-- Submitting Button -->
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-5" id="screeningMovies">
+            <div class="container-fluid container2">
+                <div class="row" id="movies"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Javascript Source -->
 <script src="movie-script.js"></script>
 </body>
