@@ -19,15 +19,18 @@ function getAllMovies() {
                                             <div class="no-edit">
                                                 <h5 class="card-title">${movies[i].title}</h5>
                                                 <p class="card-text">${movies[i].plot}</p>
-                                                <p class="card-text"><small class="text-muted"> Director: ${movies[i].director}  Actors: ${movies[i].actors} ${movies[i].year} Rating:${movies[i].rating}</small></p>
+                                                <p class="card-text"><small class="text-muted">${movies[i].genre} ${movies[i].year}</small></p>
+                                                <p class="card-text"><small class="text-muted"> Director: ${movies[i].director}  Actors: ${movies[i].actors} ,Rating:${movies[i].rating}</small></p>
                                             </div>
                                             <div class="edit d-none">
-                                            <input type="text" value="${movies[i].title}">
-                                            <input type="text" value="${movies[i].director}">
-                                            <input type="text" value="${movies[i].actors}">
-                                            <input type="text" value="${movies[i].year}">
-                                            <input type="text" value="${movies[i].rating}">
-                                            <textarea>${movies[i].plot}</textarea>
+                                            <input type="text" class="editedTitle" value="${movies[i].title}">
+                                            <input type="text" class="editedDirector" value="${movies[i].director}">
+                                            <input type="text" class="editedActors" value="${movies[i].actors}">
+                                            <input type="text" class="editedYear" value="${movies[i].year}">
+                                            <input type="text" class="editedRating" value="${movies[i].rating}">
+                                            <input type="text" class="editedGenre" value="${movies[i].genre}">
+                                            <input type="text" class="editedImg" value="${movies[i].poster}">
+                                            <textarea class="editedPlot">${movies[i].plot}</textarea>
                                             </div>
                                             <button type="submit" class="removeMovie" data-id="${movies[i].id}">Delete</button> 
                                             <button type="button" class="editMovie" data-id="${movies[i].id}">Edit</button>
@@ -50,6 +53,12 @@ function getAllMovies() {
                 $(this).parent().children().first().addClass('d-none')
                 $(this).parent().children().first().next().removeClass('d-none')
                 $(this).next().removeClass('d-none')
+            })
+            $('.saveEdit').click(function (){
+                let recordId = $(this).data("id");
+                console.log(recordId)
+
+                editingMovies(recordId)
             })
             console.log(movies)
         })
@@ -110,15 +119,23 @@ function deletingMovies(id) {
 
 /** Editing Existing Movies on the List */
 function editingMovies(id) {
+    let newTitle = $('.editedTitle').val();
+    let newDirector = $('.editedDirector').val();
+    let newActors = $('.editedActors').val();
+    let newYear = $('.editedYear').val();
+    let newRating = $('.editedRating').val();
+    let newGenre = $('.editedGenre').val();
+    let newPoster = $('.editedPoster').val();
+    let newPlot = $('.editedPlot').val();
     const editing = {
-        title: 'Night of the Living Hector',
-        rating: 5,
-        genre: 'Nature, Documentary',
-        year: '2023',
-        director: 'Doc Rob',
-        actors: 'Hector Mejia, Micah Wood, Ry, Casey',
-        poster: '',
-        plot: "At day he is hector, but at night he's a giant hector. Follow the misadventures he goes through from day to night, and the struggles he goes through."
+        title: newTitle,
+        rating: newRating,
+        genre: newGenre,
+        year: newYear,
+        director: newDirector,
+        actors: newActors,
+        poster: newPoster,
+        plot: newPlot
     };
     const option = {
         method: 'PATCH',
