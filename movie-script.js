@@ -4,30 +4,42 @@ const url = 'https://agreeable-sumptuous-lilac.glitch.me/movies'
 
 /** Making The movies Appear on the Page */
 function getAllMovies() {
+    $('#loading').removeClass('d-none')
     fetch(url)
         .then(response => response.json())
         .then(movies => {
+            let html = ""
+            html = `<div class="row">`
             for (let i = 0; i < movies.length; i++) {
-                let html = ""
-                html = `<div class="row row-cols-1 row-cols-md-4">
-                            <div class="col mb-4">
+
+                html += `<div class="col-1 col-md-4 mb-4">
                                 <div class="card h-100">
                                     <img src="${movies[i].poster}" class="movie-poster" alt="Movie Poster">
                                         <div class="card-body">
                                             <h5 class="card-title">${movies[i].title}</h5>
                                             <p class="card-text">${movies[i].plot}</p>
                                             <p class="card-text"><small class="text-muted"> Director: ${movies[i].director}  Actors: ${movies[i].actors} ${movies[i].year}</small></p>
-                                            <button type="submit" id="removeMovie">Delete</button>
+                                            <button type="submit" class="removeMovie" data-id="${movies[i].id}">Delete</button> 
                                         </div>
                                 </div>
-                            </div>
-                        </div>`
-                $(".movies").append(html)
+                            </div>`
             }
+            html +=`</div>`
+            $(".movies").append(html)
+            /** Deletion Button */
+            $('.removeMovie').click(function (){
+                let recordId = $(this).data("id");
+                console.log(recordId)
+
+                deletingMovies(recordId)
+            })
             console.log(movies)
         })
 
         .catch(error => console.error(error))
+        .finally(() => {
+            $('#loading').addClass('d-none')
+        })
 
 
 }
@@ -68,19 +80,15 @@ $('#addMovie').click(function (){
     addMovies();
 })
 
-/** Deletion Button */
-$('#removeMovie').click(function (){
-    function deletingMovies(id) {
-        const option = {
-            method: `DELETE`
-        }
-        fetch(`${url}/${id}`, option)
-            .then( response => console.log(response))
-            .then(option => console.log(option))
-            .catch( error => console.error(error));
+function deletingMovies(id) {
+    const option = {
+        method: `DELETE`
     }
-    deletingMovies()
-})
+    fetch(`${url}/${id}`, option)
+        .then( response => console.log(response))
+        .then(option => console.log(option))
+        .catch( error => console.error(error));
+}
 
 /** Editing Existing Movies on the List */
 function editingMovies(id) {
