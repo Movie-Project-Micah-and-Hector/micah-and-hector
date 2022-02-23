@@ -18,7 +18,7 @@ function getAllMovies() {
                                         <div class="card-body">
                                             <h5 class="card-title">${movies[i].title}</h5>
                                             <p class="card-text">${movies[i].plot}</p>
-                                            <p class="card-text"><small class="text-muted"> Director: ${movies[i].director}  Actors: ${movies[i].actors} ${movies[i].year}</small></p>
+                                            <p class="card-text"><small class="text-muted"> Director: ${movies[i].director}  Actors: ${movies[i].actors} ${movies[i].year} Rating:${movies[i].rating}</small></p>
                                             <button type="submit" class="removeMovie" data-id="${movies[i].id}">Delete</button> 
                                         </div>
                                 </div>
