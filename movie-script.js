@@ -16,10 +16,22 @@ function getAllMovies() {
                                 <div class="card h-100">
                                     <img src="${movies[i].poster}" class="movie-poster" alt="Movie Poster">
                                         <div class="card-body">
-                                            <h5 class="card-title">${movies[i].title}</h5>
-                                            <p class="card-text">${movies[i].plot}</p>
-                                            <p class="card-text"><small class="text-muted"> Director: ${movies[i].director}  Actors: ${movies[i].actors} ${movies[i].year} Rating:${movies[i].rating}</small></p>
+                                            <div class="no-edit">
+                                                <h5 class="card-title">${movies[i].title}</h5>
+                                                <p class="card-text">${movies[i].plot}</p>
+                                                <p class="card-text"><small class="text-muted"> Director: ${movies[i].director}  Actors: ${movies[i].actors} ${movies[i].year} Rating:${movies[i].rating}</small></p>
+                                            </div>
+                                            <div class="edit d-none">
+                                            <input type="text" value="${movies[i].title}">
+                                            <input type="text" value="${movies[i].director}">
+                                            <input type="text" value="${movies[i].actors}">
+                                            <input type="text" value="${movies[i].year}">
+                                            <input type="text" value="${movies[i].rating}">
+                                            <textarea>${movies[i].plot}</textarea>
+                                            </div>
                                             <button type="submit" class="removeMovie" data-id="${movies[i].id}">Delete</button> 
+                                            <button type="button" class="editMovie" data-id="${movies[i].id}">Edit</button>
+                                            <button type="button" class="saveEdit d-none" data-id="${movies[i].id}">Save</button>
                                         </div>
                                 </div>
                             </div>`
@@ -32,6 +44,12 @@ function getAllMovies() {
                 console.log(recordId)
 
                 deletingMovies(recordId)
+            })
+            $('.editMovie').click(function (){
+                console.log('trying to edit')
+                $(this).parent().children().first().addClass('d-none')
+                $(this).parent().children().first().next().removeClass('d-none')
+                $(this).next().removeClass('d-none')
             })
             console.log(movies)
         })
