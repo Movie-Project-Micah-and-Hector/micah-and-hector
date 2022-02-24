@@ -2,6 +2,10 @@
 
 const url = 'https://agreeable-sumptuous-lilac.glitch.me/movies'
 
+$('.refresh').click(function (){
+    location.reload()
+})
+
 /** Making The movies Appear on the Page */
 function getAllMovies() {
     $('#loading').removeClass('d-none')
@@ -151,7 +155,5 @@ function editingMovies(id) {
         .then(option => console.log(option))
         .catch( error => console.error(error));
 }
-// editingMovies()
-//night of the living hector id: 263
 
 
