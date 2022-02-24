@@ -5,6 +5,7 @@ const url = 'https://agreeable-sumptuous-lilac.glitch.me/movies'
 /** Making The movies Appear on the Page */
 function getAllMovies() {
     $('#loading').removeClass('d-none')
+    $('#showingMovies').addClass('d-none')
     fetch(url)
         .then(response => response.json())
         .then(movies => {
@@ -23,14 +24,14 @@ function getAllMovies() {
                                                 <p class="card-text"><small class="text-muted"> Director: ${movies[i].director}  Actors: ${movies[i].actors} ,Rating:${movies[i].rating}</small></p>
                                             </div>
                                             <div class="edit d-none">
-                                            <input type="text" class="editedTitle" value="${movies[i].title}">
-                                            <input type="text" class="editedDirector" value="${movies[i].director}">
-                                            <input type="text" class="editedActors" value="${movies[i].actors}">
-                                            <input type="text" class="editedYear" value="${movies[i].year}">
-                                            <input type="text" class="editedRating" value="${movies[i].rating}">
-                                            <input type="text" class="editedGenre" value="${movies[i].genre}">
-                                            <input type="text" class="editedImg" value="${movies[i].poster}">
-                                            <textarea class="editedPlot">${movies[i].plot}</textarea>
+                                            <input id="editedTitle-${movies[i].id}" type="text" class="editedTitle" value="${movies[i].title}">
+                                            <input id="editedDirector-${movies[i].id}" type="text" class="editedDirector" value="${movies[i].director}">
+                                            <input id="editedActors-${movies[i].id}" type="text" class="editedActors" value="${movies[i].actors}">
+                                            <input id="editedYear-${movies[i].id}" type="text" class="editedYear" value="${movies[i].year}">
+                                            <input id="editedRating-${movies[i].id}" type="text" class="editedRating" value="${movies[i].rating}">
+                                            <input id="editedGenre-${movies[i].id}" type="text" class="editedGenre" value="${movies[i].genre}">
+                                            <input id="editedImg-${movies[i].id}" type="text" class="editedImg" value="${movies[i].poster}">
+                                            <textarea id="editedPlot-${movies[i].id}" class="editedPlot">${movies[i].plot}</textarea>
                                             </div>
                                             <button type="submit" class="removeMovie" data-id="${movies[i].id}">Delete</button> 
                                             <button type="button" class="editMovie" data-id="${movies[i].id}">Edit</button>
@@ -66,6 +67,7 @@ function getAllMovies() {
         .catch(error => console.error(error))
         .finally(() => {
             $('#loading').addClass('d-none')
+            $('#showingMovies').removeClass('d-none')
         })
 
 
@@ -119,14 +121,14 @@ function deletingMovies(id) {
 
 /** Editing Existing Movies on the List */
 function editingMovies(id) {
-    let newTitle = $('.editedTitle').val();
-    let newDirector = $('.editedDirector').val();
-    let newActors = $('.editedActors').val();
-    let newYear = $('.editedYear').val();
-    let newRating = $('.editedRating').val();
-    let newGenre = $('.editedGenre').val();
-    let newPoster = $('.editedPoster').val();
-    let newPlot = $('.editedPlot').val();
+    let newTitle = $(`#editedTitle-${id}`).val();
+    let newDirector = $(`#editedDirector-${id}`).val();
+    let newActors = $(`#editedActors-${id}`).val();
+    let newYear = $(`#editedYear-${id}`).val();
+    let newRating = $(`#editedRating-${id}`).val();
+    let newGenre = $(`#editedGenre-${id}`).val();
+    let newPoster = $(`#editedPoster-${id}`).val();
+    let newPlot = $(`#editedPlot-${id}`).val();
     const editing = {
         title: newTitle,
         rating: newRating,
