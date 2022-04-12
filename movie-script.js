@@ -1,6 +1,6 @@
 "use strict";
 
-const url = 'https://agreeable-sumptuous-lilac.glitch.me/movies'
+const url = 'http://localhost:8080/movies'
 
 $('.refresh').click(function (){
     location.reload()
@@ -104,7 +104,7 @@ $('#addMovie').click(function (){
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(addition),
+            body: JSON.stringify([addition]),
         };
         fetch(url, option)
             .then( response => console.log(response))
@@ -144,7 +144,7 @@ function editingMovies(id) {
         plot: newPlot
     };
     const option = {
-        method: 'PATCH',
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
